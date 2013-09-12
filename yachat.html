@@ -1,0 +1,32 @@
+<head>
+  <title>yachat</title>
+</head>
+
+<body>
+  {{> chat}}
+  {{> messages}}
+</body>
+
+<template name="chat">
+  <h1>Zup Chat</h1>
+  {{#unless registred}}
+    <input type="text" id="username"/>
+    <button id="register">Vai</button>
+  {{/unless}}
+  {{#if registred}}
+    <form>
+      <textarea cols="50" rows="10">{{message.text}}</textarea>
+      <input type="submit" value="Send" />
+    </form>
+  {{/if}}
+</template>
+
+<template name="messages">
+  {{#if registred}}
+  <ul>
+    {{#each messages}}
+      <li><strong>{{username}}: </strong>{{value}}</li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</template>
